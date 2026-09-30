@@ -155,11 +155,15 @@ test("Azync-Bot renders Markdown and returns to the latest answer after reopenin
     return route.fulfill({ json: {} });
   });
 
+  const authReady = page.waitForResponse(
+    (response) => new URL(response.url()).pathname === "/auth/me",
+  );
   await page.goto("/");
+  await authReady;
   await page.getByRole("button", { name: "Open Azync-Bot" }).click();
-  await page
-    .getByLabel("Question for Azync-Bot")
-    .fill("Give me the long answer");
+  const question = page.getByLabel("Question for Azync-Bot");
+  await expect(question).toBeEnabled();
+  await question.fill("Give me the long answer");
   await page
     .getByRole("button", { name: "Send question to Azync-Bot" })
     .click();
