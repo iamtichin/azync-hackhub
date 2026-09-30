@@ -226,8 +226,8 @@ describe('AI analysis flow (e2e)', () => {
           id: hackathonId,
           name: 'AI E2E Hackathon',
           isPublished: true,
-          startDate: new Date('2026-09-01'),
-          endDate: new Date('2026-09-30'),
+          startDate: new Date(Date.now() - 60_000),
+          endDate: new Date(Date.now() + 3_600_000),
           tracks: { create: { id: trackId, name: 'AI' } },
           rules: [
             {
