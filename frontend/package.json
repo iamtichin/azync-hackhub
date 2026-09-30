@@ -1,0 +1,44 @@
+{
+  "name": "azync-hackhub-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test:smoke": "npm run build && node ./scripts/run-smoke.mjs"
+  },
+  "dependencies": {
+    "@fontsource/fira-code": "^5.3.0",
+    "@fontsource/fira-sans": "^5.3.0",
+    "@hookform/resolvers": "^3.10.0",
+    "@solana/wallet-adapter-base": "^0.9.27",
+    "@solana/wallet-adapter-phantom": "^0.9.28",
+    "@solana/wallet-adapter-react": "^0.15.39",
+    "@solana/wallet-adapter-react-ui": "^0.9.39",
+    "@solana/wallet-adapter-solflare": "^0.6.32",
+    "@solana/web3.js": "^1.98.4",
+    "axios": "^1.12.2",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "next": "^16.3.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.62.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "socket.io-client": "^4.8.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "rootDir": "../..",
+  "testEnvironment": "node",
+  "testMatch": ["<rootDir>/test/github/*.integration-spec.ts"],
+  "transform": {
+    "^.+\\.ts$": [
+      "ts-jest",
+      {
+        "tsconfig": {
+          "module": "CommonJS",
+          "moduleResolution": "node",
+          "resolvePackageJsonExports": false,
+          "esModuleInterop": true
+        }
+      }
+    ]
+  },
+  "maxWorkers": 1
+}

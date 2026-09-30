@@ -1,0 +1,5 @@
+ALTER TABLE "SolanaTransaction"
+ADD COLUMN "lastValidBlockHeight" BIGINT,
+ADD COLUMN "mintAttemptId" TEXT,
+ADD COLUMN "mintLeaseExpiresAt" TIMESTAMP(3),
+ADD COLUMN "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

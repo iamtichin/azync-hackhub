@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: azync-hackhub-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - GITHUB_ORG_NAME=${GITHUB_ORG_NAME}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL}
+      - SOLANA_PRIVATE_KEY=${SOLANA_PRIVATE_KEY}
+      - FRONTEND_URL=${FRONTEND_URL}
+    depends_on:
+      - redis
+    networks:
+      - hackhub-network
+    restart: unless-stopped
+    command: sh -c "npx prisma migrate deploy && node dist/main.js"
+
+  redis:
+    image: redis:7-alpine
+    container_name: azync-hackhub-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - hackhub-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+networks:
+  hackhub-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local
